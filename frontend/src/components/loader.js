@@ -5,7 +5,7 @@ import { Spinner } from 'react-bootstrap'
 function Loader() {
   return (
     <Spinner
-        animation='border'px
+        animation='border'
         role='status'
         style={{
             height:'100px',
