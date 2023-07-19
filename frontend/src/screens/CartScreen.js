@@ -19,13 +19,20 @@ function CartScreen() {
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
     
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
     }
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=shipping')
+        if(!userInfo){
+            navigate('/login?redirect=shipping')
+        }else{
+            navigate('/shipping')
+        }
     }
 
     useEffect(() => {

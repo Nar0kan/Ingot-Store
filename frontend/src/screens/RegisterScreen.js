@@ -45,8 +45,8 @@ function RegisterScreen() {
 
     return (
         <FormContainer>
-             <h1>Register</h1>
-             {message && <Message variant='danger'>{message}</Message>}
+            <h1>Register</h1>
+            {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
