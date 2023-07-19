@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
-import Message from '../components/message'
+import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
@@ -24,11 +24,10 @@ function PlaceOrderScreen() {
     cart.taxPrice = Number((0.15) * cart.itemsPrice).toFixed(2)
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
-    if(!cart.paymentMethod){
-        navigate('/payment')
-    }
-
     useEffect(() => {
+        if(!cart.paymentMethod){
+            navigate('/payment')
+        }
         if(success){
             navigate(`/order/${order._id}`)
             dispatch({type:ORDER_CREATE_RESET})
@@ -77,9 +76,9 @@ function PlaceOrderScreen() {
                             <h2>Order items</h2>
 
                             {cart.cartItems.length === 0 ? (
-                                <message variant='info'>
+                                <Message variant='info'>
                                     Your cart is empty
-                                </message>)
+                                </Message>)
                             : (
                                 <ListGroup variant='flush'>
                                     {cart.cartItems.map((item, index) => (
@@ -95,7 +94,7 @@ function PlaceOrderScreen() {
 
                                                 <Col md={4}>
                                                     {item.qty} x ${item.price} = ${(item.qty * item.price).toFixed(2)}
-                                                </Col>  
+                                                </Col>
                                             </Row>
                                         </ListGroup.Item>
                                     ))}

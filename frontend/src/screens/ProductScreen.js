@@ -4,8 +4,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card, Form, ListGroupItem } from 'react-bootstrap'
 
 import Rating from '../components/Rating'
-import Loader from '../components/loader'
-import Message from '../components/message'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 import { listProductDeails } from '../actions/productActions'
 
 
