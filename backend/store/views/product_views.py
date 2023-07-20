@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -11,7 +12,16 @@ from store.models import *
 
 @api_view(['GET'])
 def getProducts(request):
-    products = Product.objects.all()
+    query = request.query_params.get('keyword')
+    if query == None:
+        query = ''
+
+    products = Product.objects.filter(
+        Q(name__icontains=query) | 
+        Q(brand__icontains=query) | 
+        Q(category__icontains=query) | 
+        Q(price__icontains=query) |
+        Q(description__icontains=query))
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
@@ -77,3 +87,41 @@ def uploadImage(request):
     product.save()
 
     return Response('Image was uploaded.')
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createProductReview(request, pk):
+    user = request.user
+    data=request.data
+    product = Product.objects.get(_id = pk)
+    
+    #1 - Review already exists
+    alreadyExists = product.review_set.filter(user=user).exists()
+    if alreadyExists:
+        content = {'detail': 'Product already reviewed'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    #2 - No rating or 0
+    elif data['rating'] == 0:
+        content = {'detail': 'Please, select rating...'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    #3 - Create review
+    else:
+        review = Review.objects.create(
+            user=user,
+            product=product,
+            name=user.first_name,
+            rating=data['rating'],
+            comment=data['comment'],
+        )
+        reviews = product.review_set.all()
+        reviewsNum = len(reviews)
+        product.numReviews = reviewsNum
+
+        total = 0
+        for i in reviews:
+            total += i.rating
+        product.rating = total/reviewsNum
+        product.save()
+
+        return Response('Review added.')

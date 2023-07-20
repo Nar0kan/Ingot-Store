@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Form, Nav, Button, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-
+import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 
 
@@ -69,15 +69,7 @@ function Header() {
                         ) }
 
                     </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    <SearchBox />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
