@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -53,8 +53,7 @@ function OrderScreen() {
         }
     }, [dispatch, order, orderId, successPay])
 
-    const successPaymentHandler = (paymentResult, data, actions) => {
-        actions.order.capture()
+    const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult))
     }
 
@@ -205,9 +204,8 @@ function OrderScreen() {
                                     {!sdkReady ? (
                                         <Loader/>
                                     ) : (
-                                        <PayPalScriptProvider options={{ clientId: "test"}} onApprove={successPaymentHandler}>
+                                        <PayPalScriptProvider options={{ clientId: "test" }}>
                                             <PayPalButtons
-                                                style = {{layout: "horizontal"}}
                                                 createOrder={(data, actions) => {
                                                     return actions.order.create({
                                                         purchase_units: [
@@ -219,8 +217,12 @@ function OrderScreen() {
                                                         ],
                                                     });
                                                 }}
-                                                onApprove={(data, action) => successPaymentHandler}
-                                                />
+                                                onApprove={(data, actions) => {
+                                                    return actions.order.capture().then((details) => {
+                                                        successPaymentHandler()
+                                                    });
+                                                }}
+                                            />
                                         </PayPalScriptProvider>
                                     )}
                                 </ListGroup.Item>
