@@ -16,7 +16,7 @@ if env.bool('READ_DOT_ENV_FILE', default=False):    # True in debug / False in p
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 
 # Application definition
