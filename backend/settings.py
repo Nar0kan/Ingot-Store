@@ -16,7 +16,7 @@ if env.bool('READ_DOT_ENV_FILE', default=True):    # True in debug / False in pr
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '*']
 
 
 # Application definition
