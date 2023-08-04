@@ -10,13 +10,13 @@ env = environ.Env(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-if env.bool('READ_DOT_ENV_FILE', default=False):    # True in debug / False in production
+if env.bool('READ_DOT_ENV_FILE', default=True):    # True in debug / False in production
     environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
