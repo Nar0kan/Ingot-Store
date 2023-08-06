@@ -3,7 +3,7 @@
 <div align="center">
 
   <img src="frontend/build/favicon.ico" alt="logo" width="50" height="auto" />
-  <h1>Awesome Readme Template</h1>
+  <h1>Ingot-Store</h1>
   
   <p>
     E-commerse shop website built with Django and React
