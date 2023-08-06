@@ -2,31 +2,17 @@
 
 <div align="center">
 
-  <img src="" alt="logo" width="200" height="auto" />
+  <img src="frontend/build/favicon.ico" alt="logo" width="50" height="auto" />
   <h1>Awesome Readme Template</h1>
   
   <p>
     E-commerse shop website built with Django and React
   </p>
-
-  
-<!-- Badges -->
-<p>
-  <a href="https://github.com/Nar0kan/Ingot-Store/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Nar0kan/Ingot-Store/" alt="contributors" />
-  </a>
-  <a href="https://img.shields.io/github/last-commit/Nar0kan/Ingot-Store/">
-    <img src="https://img.shields.io/github/last-commit/Nar0kan/Ingot-Store/" alt="last update" />
-  </a>
-  <a href="https://github.com/Nar0kan/Ingot-Store/">
-    <img src="https://img.shields.io/github/issues/Nar0kan/Ingot-Store/" alt="open issues" />
-  </a>
-</p>
    
 <h4>
-    <a href="https://ingot-store-6876b1ee7d4d.herokuapp.com/#/">View Demo</a>
+    <a href="https://ingot-store-6876b1ee7d4d.herokuapp.com/#/" target="_blank">View Demo</a>
   <span> · </span>
-    <a href="https://github.com/Nar0kan/Ingot-Store/issues/">Report Bug</a>
+    <a href="https://github.com/Nar0kan/Ingot-Store/issues/" target="_blank">Report Bug</a>
 </div>
 
 <br />
@@ -48,13 +34,29 @@
 <!-- About the Project -->
 ## :star2: About the Project
 
-<div align="center"> 
-  <img src="" alt="screenshot" />
-  <img src="" alt="screenshot" />
-  <img src="" alt="screenshot" />
-  <img src="" alt="screenshot" />
-  <img src="" alt="screenshot" />
-  <img src="" alt="screenshot" />
+
+Built while progressing through course. Using React with Redux for Frontend
+and Django for API calls. Contain integration with PayPal. Site has different
+rights and availabilities for unregistered/registered and admin users. Cart
+items are saved in LocalStorage, so after page reload they won't disapear.
+Connected to PostgreSQL Cloud Database on Railway (Demo). You can connect
+it to your own local/cloud database. 
+
+Some of the knowledge gains:
+CRUD, Auth, REST, API, Models fields, Search and Pagination functionality, 
+Gunicorn, Static & Media files, heroku deploy, railway postgres deploy,
+React basics, LocalStorage, State Flow, React-Bootstrap, PayPal API.
+
+
+Screenshots:
+
+<div align="center">
+  <img src="static/images/ingotstore_1.png" alt="screenshot 1" />
+  <img src="static/images/ingotstore_2.png" alt="screenshot 2" />
+  <img src="static/images/ingotstore_3.png" alt="screenshot 3" />
+  <img src="static/images/ingotstore_4.png" alt="screenshot 4" />
+  <img src="static/images/ingotstore_5.png" alt="screenshot 5" />
+  <img src="static/images/ingotstore_6.png" alt="screenshot 6" />
 </div>
 
 
